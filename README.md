@@ -34,8 +34,8 @@
 
 From first glance, not many of the QA test cases could be bona fide unit test - being more akin to dom and "end-to-end" (e2e) tests. However a couple stand out:
 
-    *Ensure the programme image, title & number of available episodes is returned with the list of results.*
-    *Ensure a suitable message is returned to the user when no results are found.*
+    Ensure the programme image, title & number of available episodes is returned with the list of results.
+    Ensure a suitable message is returned to the user when no results are found.
 
 From these the following unit tests could be written:
 
