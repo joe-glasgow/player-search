@@ -37,7 +37,7 @@ From first glance, not many of the QA test cases could be bona fide unit test - 
     Ensure the programme image, title & number of available episodes is returned with the list of results.
     Ensure a suitable message is returned to the user when no results are found.
 
-From these the following unit tests could be written:
+From these, the following unit tests could be written:
 
 #### Describe:
 	Module can build a request to the search API and
@@ -52,19 +52,22 @@ From these the following unit tests could be written:
 	Module can handle a successful call when
 		It receives a successful JSON response
 			expect the response to fit the format of a successful response as determined by API docs
+            expect the response to contain image reference as defined in test case
+            expect the response to contain title as defined in the test case
+            expect the response to contain number of episodes as defined in the test case
 			expect a successful callback to have been called
 
 #### Describe:
 	Module can handle a failed call when
 		 It receives a  failed JSON response
 			expect a fail response to fit the format as defined in the API
-			expect a server error to be hanlded with error and message to user
+			expect a server error to be handled with error and message to user
 
 
-But wait! We need to build some more things for these tests to pass!
+_But wait! We need to build some more things for these tests to pass!_
 
-A layer that can communicate with the API and an error handling module - these
-will also need unit tested!
+A layer that can communicate with the API and an error handling module - _these
+will also need unit tested!_
 
 #### Test Plan:
 	Build a layer that can communicate with the STV player API
