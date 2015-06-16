@@ -2,7 +2,7 @@
 
 ## As a customer, I would like to use a basic search function, so that I can find a programme to watch
 
-### QA Test Cases ** taken from Target Process **
+### QA Test Cases *taken from Target Process*
 Verify there is a search icon on the homepage that opens the overlay when clicked.
 
 Verify there is a search icon on programme pages that opens the overlay when clicked.
