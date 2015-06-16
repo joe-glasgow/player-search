@@ -34,12 +34,12 @@
 
 From first glance, not many of the QA test cases could be bona fide unit test - being more akin to dom and "end-to-end" (e2e) tests. However a couple stand out:
 
-*Ensure the programme image, title & number of available episodes is returned with the list of results.*
-*Ensure a suitable message is returned to the user when no results are found.*
+    *Ensure the programme image, title & number of available episodes is returned with the list of results.*
+    *Ensure a suitable message is returned to the user when no results are found.*
 
 From these the following unit tests could be written:
 
-#### describe -
+#### Describe:
 	Module can build a request to the search API and
 	    It can build the correct url
 	    	expect the built url to be that of correct url
@@ -48,13 +48,13 @@ From these the following unit tests could be written:
 	    	expect an error if the request  is not correct format
 	    	expect an error if incorrect query type sent to module
 
-#### describe -
+#### Describe:
 	Module can handle a successful call when
 		It receives a successful JSON response
 			expect the response to fit the format of a successful response as determined by API docs
 			expect a successful callback to have been called
 
-#### describe -
+#### Describe:
 	Module can handle a failed call when
 		 It receives a  failed JSON response
 			expect a fail response to fit the format as defined in the API
