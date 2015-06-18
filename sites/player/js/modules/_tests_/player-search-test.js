@@ -1,26 +1,51 @@
 jest.dontMock('../player-search.js');
-
+jest.donMock('jquery');
+let jQuery require('jquery');
+// moduel to test
 import searchAPI from '../player-search';
-
+// assign $ as a global
+$ = jQuery;
+// search function
+let searchRequest = searchAPI.getInstance();
 // Build a request
 describe('Module can build a request to the search API and', () => {
     it('can build the correct url', () => {
+        // spy on a deffered object
+        spyOn($, "Deffered").andCallThrough();
+        // spy on ajax
+        spyOn($, "ajax").andCallFake((e) => {
+            url = e.url;
+        });
+        //make a request
+        searchRequest.searchValue('coronation%20street').retrieve();
+        // expect url to be that as called
         expect(url).toBe('http://whatever');
     });
     it('can throw an error if request does not have correct params', () => {
-        var callAPIWithError = api.doWrongThing();
-        var malFormatted = api.badString();
+        //search with no values
+        let callAPIWithError = searchRequest.searchValue('').retrieve;
         // expect an error to occur if something wrong
-        expect(callAPIWithError).toEqual(error);
-        // expect a malformed string to error
-        expect(malFormatted).toEqual(error);
+        expect(callAPIWithError()).toEqual(error);
+        // search with incorrect values
+        let malFormatted = searchRequest.searchValue(Object).retrieve;
+        // expect non string to error
+        expect(malFormatted()).toEqual(error);
     })
 });
 // successful request
 describe('Module can handle a successful call when', () => {
+    let successFullResponse = require('../__json__/api-sample-success');
+    let response = null;
+
     it('recieves a successful JSON response', () => {
-        // check a call was made
-        expect(api.makeRequest).toHaveBeenCalled();
+        //set up spies
+        spyOn($, 'Deferred').andCallThrough();
+        spyOn($, 'ajax').andCallFake((e) => {
+            // a successful response would bring back json
+            response = successFullResponse;
+        });
+        // make the call
+        searchRequest.searchValue('coronation%20street').retrieve();
         // check if we received an object in response
         expect(typeof response).toBe("object");
         // check if response retrieved was successful
@@ -37,10 +62,24 @@ describe('Module can handle a successful call when', () => {
 });
 // failed request
 describe("Module can handle a failed call when", () => {
+    let failResponse = require('../__json__/api-sample-fail');
+    //set up spies
+    spyOn($, 'Deferred').andCallThrough();
+    spyOn($, 'ajax').andCallFake((e) => {
+        // a successful response would bring back json
+        response = failResponse;
+    });
+    // simulate a fail
+    searchRequest.searchValue('%2090').retrieve();
+
     it('receives a failed JSON response', () => {
         // expect success to be false
         expect(response.success).toBe(false);
+        // expect a reason object
+        expect(typeof response.reason).toBe("object");
         // expect a reason code
-        expect(typeof response.reason).toBe("number");
+        expect(typeof response.reason.code).toBe("object");
+        // expect a message
+        expect(typeof response.reason.message).toBe("string");
     });
 });
