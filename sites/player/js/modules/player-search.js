@@ -6,14 +6,15 @@ import errorHandler from '../error-handler';
 @apiClient
 export default class playerSearch {
     constructor() {
-        // add /search/ to api url  http://api/search/
+        // add /search/ to api url  http://{this.apiurl}/search/
         this.queryType = 'search'
     }
     searchValue(value) {
         /* some func*/
         try {
-            // error handler for is string will throw error if not a string
+            //error handler for is string will throw error if not a string
             this.isString(value);
+            //add search input to query  http://{this.apiurl}/search/?input=<value>
             this.requestParams.input = value;
         } catch(e) {
             throw new TypeError("Value must be a string");
