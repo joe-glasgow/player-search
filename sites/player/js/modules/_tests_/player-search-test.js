@@ -39,7 +39,7 @@ describe('Module can build a request to the search API and', () => {
             // expect an error to have been caught
             errorCount++;
         }
-
+        // expect errors to have occurred twice
         expect(errorCount).toEqual(2);
     })
 });
