@@ -69,7 +69,7 @@ describe("Module can handle a failed call when", () => {
         // a successful response would bring back json
         response = failResponse;
     });
-    // simulate a fail
+    // simulate a fail - bad string characters
     searchRequest.searchValue('%2090').retrieve();
 
     it('receives a failed JSON response', () => {
