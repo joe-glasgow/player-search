@@ -1,3 +1,4 @@
+import baseClass from '../stv-base-class';
 import apiClient from '../api-client';
 import errorHandler from '../error-handler';
 
