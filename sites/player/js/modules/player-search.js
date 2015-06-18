@@ -24,7 +24,7 @@ export default class playerSearch {
     }
     retrieve() {
         try {
-            this.requestParams.hasValue(input);
+            this.hasValue(this.requestParams.input);
             /* some func */
             makeAPIRequest().done((data) => {
                 return data;
