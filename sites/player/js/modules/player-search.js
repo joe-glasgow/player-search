@@ -11,7 +11,13 @@ export default class playerSearch {
     }
     searchValue(value) {
         /* some func*/
-        this.requestParams.input = value;
+        try {
+            // error handler for is string will throw error if not a string
+            this.isString(value);
+            this.requestParams.input = value;
+        } catch(e) {
+            throw new TypeError("Value must be a string");
+        }
     }
     retrieve() {
         /* some func */

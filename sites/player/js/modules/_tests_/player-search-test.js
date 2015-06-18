@@ -45,7 +45,7 @@ describe('Module can build a request to the search API and', () => {
 });
 // successful request
 describe('Module can handle a successful call when', () => {
-    let successFullResponse = require('../__json__/api-sample-success');
+    let successFullResponse = require('./__json__/api-sample-success');
     let response = null;
 
     it('recieves a successful JSON response', () => {
@@ -73,7 +73,7 @@ describe('Module can handle a successful call when', () => {
 });
 // failed request
 describe("Module can handle a failed call when", () => {
-    let failResponse = require('../__json__/api-sample-fail');
+    let failResponse = require('./__json__/api-sample-fail');
     //set up spies
     spyOn($, 'Deferred').andCallThrough();
     spyOn($, 'ajax').andCallFake((e) => {
