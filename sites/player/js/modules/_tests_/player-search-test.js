@@ -23,13 +23,24 @@ describe('Module can build a request to the search API and', () => {
     });
     it('can throw an error if request does not have correct params', () => {
         //search with no values
-        let callAPIWithError = searchRequest.searchValue('').retrieve;
+        let errorCount = 0;
         // expect an error to occur if something wrong
-        expect(callAPIWithError()).toEqual(error);
-        // search with incorrect values
-        let malFormatted = searchRequest.searchValue(Object).retrieve;
-        // expect non string to error
-        expect(malFormatted()).toEqual(error);
+        try {
+            // search with incorrect values
+            searchRequest.searchValue('').retrieve;
+        } catch(e) {
+            errorCount++;
+        }
+        // another eror type
+        try {
+            // expect non string to error
+            searchRequest.searchValue(Object).retrieve();
+        } catch (e) {
+            // expect an error to have been caught
+            errorCount++;
+        }
+
+        expect(errorCount).toEqual(2);
     })
 });
 // successful request
