@@ -11,8 +11,12 @@ export default class playerSearch {
     }
     searchValue(value) {
         /* some func*/
+        this.requestParams.input = value;
     }
     retrieve() {
         /* some func */
+        makeAPIRequest().done(function (data) {
+            return data;
+        });
     }
 }
