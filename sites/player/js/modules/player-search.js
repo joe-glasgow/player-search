@@ -21,9 +21,15 @@ export default class playerSearch {
         }
     }
     retrieve() {
-        /* some func */
-        makeAPIRequest().done(function (data) {
-            return data;
-        });
+        try {
+            this.requestParams.hasValue(input);
+            /* some func */
+            makeAPIRequest().done((data) => {
+                return data;
+            });
+        } catch (e) {
+            // RequiredError from ErrorHandler
+            throw new RequiredError("Search Value must be present");
+        }
     }
 }
