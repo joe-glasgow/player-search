@@ -17,7 +17,7 @@ export default class playerSearch {
             //add search input to query  http://{this.apiurl}/search/?input=<value>
             this.requestParams.input = value;
         } catch(e) {
-            throw new TypeError("Value must be a string");
+            throw new Error(e.message);
         }
     }
     retrieve() {
