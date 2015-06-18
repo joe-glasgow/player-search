@@ -2,11 +2,11 @@ jest.dontMock('../player-search.js');
 jest.donMock('jquery');
 let jQuery require('jquery');
 // moduel to test
-import searchAPI from '../player-search';
+import playerSearch from '../player-search';
 // assign $ as a global
 $ = jQuery;
 // search function
-let searchRequest = searchAPI.getInstance();
+let playerSearch = searchAPI.getInstance();
 // Build a request
 describe('Module can build a request to the search API and', () => {
     it('can build the correct url', () => {
