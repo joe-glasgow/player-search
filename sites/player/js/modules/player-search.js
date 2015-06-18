@@ -2,6 +2,7 @@ import apiClient from '../api-client';
 import errorHandler from '../error-handler';
 
 // create search class - with error handler and api client base
+@baseClass
 @errorHandler
 @apiClient
 export default class playerSearch {

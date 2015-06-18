@@ -6,7 +6,7 @@ import playerSearch from '../player-search';
 // assign $ as a global
 $ = jQuery;
 // search function
-let playerSearch = searchAPI.getInstance();
+let searchRequest = playerSearch.getInstance();
 // Build a request
 describe('Module can build a request to the search API and', () => {
     it('can build the correct url', () => {
