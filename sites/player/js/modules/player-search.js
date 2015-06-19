@@ -31,7 +31,7 @@ export default class playerSearch {
             });
         } catch (e) {
             // RequiredError from ErrorHandler
-            throw new RequiredError("Search Value must be present");
+            throw new Error(e.message);
         }
     }
 }

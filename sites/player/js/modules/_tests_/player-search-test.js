@@ -1,6 +1,6 @@
 jest.dontMock('../player-search.js');
 jest.donMock('jquery');
-let jQuery require('jquery');
+let jQuery = require('jquery');
 // moduel to test
 import playerSearch from '../player-search';
 // assign $ as a global
@@ -10,6 +10,7 @@ let searchRequest = playerSearch.getInstance();
 // Build a request
 describe('Module can build a request to the search API and', () => {
     it('can build the correct url', () => {
+        let url = '';
         // spy on a deffered object
         spyOn($, "Deffered").andCallThrough();
         // spy on ajax
@@ -19,7 +20,7 @@ describe('Module can build a request to the search API and', () => {
         //make a request
         searchRequest.searchValue('coronation%20street').retrieve();
         // expect url to be that as called
-        expect(url).toBe('http://whatever');
+        expect(url).toBe('http://{apiUrl}/search/input=coronation%20street');
     });
     it('can throw an error if request does not have correct params', () => {
         //search with no values
